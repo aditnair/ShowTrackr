@@ -67,32 +67,29 @@ struct SplashView: View
                     test += 225
                 }
                 // -------------------------------------
-            }label:{
+            } label:{
                 path
-                    .fill( LinearGradient(gradient: Gradient(stops: [
+                    .fill(LinearGradient(gradient: Gradient(stops: [
                         Gradient.Stop(color:.white,location:{ loginGradientTicketPosition-0.25}()),
                         Gradient.Stop(color:Color( #colorLiteral(red: 1, green: 0.9938470721, blue: 0.5436941981, alpha: 1) ),location:{ loginGradientTicketPosition}()),
                         Gradient.Stop(color:.white,location: { loginGradientTicketPosition+0.25}()),
                     ]), startPoint:UnitPoint(x:0.5,y:0),endPoint:UnitPoint(x:0.5,y:1)))
                     .overlay(path.stroke(Color(red:255,green:215,blue:0),lineWidth:2))
                     .rotationEffect(Angle(degrees:90))
-                    .position(x:loginTicketPathX,y:loginTicketPathY)
-                    .onAppear
-                    {
+//                    .position(x:loginTicketPathX,y:loginTicketPathY)
+                    .onAppear {
                         withAnimation(.easeOut(duration:1.5))
                         {
                             self.loginTicketPathY += 395
                         }
                     }
             }
+            .position(CGPoint(x:loginTicketPathX, y:loginTicketPathY))
             .buttonStyle(BounceButtonStyle())
-//            .bounceOnTap()
-//            .buttonStyle(.plain)
             Text(PreLoginTicketText)
                 .modifier(SmallText(offsetX:loginTicketPathX-307.5,
                                     offsetY:loginTicketPathY-367.5))
-                .onAppear
-                {
+                .onAppear {
                     LogInTicketTextTypeWriter(txtSpeed:0.05,strTime:1.9,txt:"Log in with Google")
                 }
         }
@@ -229,13 +226,7 @@ struct SplashView: View
 struct BounceButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-        .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
-    }
-}
-
-extension View {
-    func bounceOnTap() -> Self {
-        self.buttonStyle(BounceButtonStyle()) as! Self
+            .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
     }
 }
 
