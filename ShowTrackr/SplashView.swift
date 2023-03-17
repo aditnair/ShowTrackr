@@ -62,10 +62,10 @@ struct SplashView: View
             let path = TicketView(xSizeFac:1.45,ySizeFac:1.3)
             Button {
                 // -------------------------------------
-                withAnimation(.easeInOut(duration:10)){
-                    loginGradientTicketPosition += 0.1
-                    test += 225
-                }
+//                withAnimation(.easeInOut(duration:10)){
+//                    loginGradientTicketPosition += 0.1
+//                    test += 225
+//                }
                 // -------------------------------------
             } label:{
                 path
